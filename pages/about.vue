@@ -1,9 +1,17 @@
 <template>
   <h1>About</h1>
+  <div>{{ data }}</div>
 </template>
 
-<script>
-export default {};
+<script setup>
+const { data } = await useFetch("/api/currency/GBP", {
+  method: "post",
+  body: {
+    age: 30,
+  },
+});
 </script>
 
-<style></style>
+<stylescoped>
+
+</stylescoped>
