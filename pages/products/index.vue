@@ -1,22 +1,27 @@
 <template>
-  <h1>Products</h1>
-  <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque soluta
-    corporis, eos, maiores et, voluptatibus esse dolores saepe quibusdam earum
-    blanditiis sequi ipsum illo doloribus corrupti quasi similique quisquam
-    numquam. Rem ad aut eligendi autem, nemo quia libero neque! Magnam vel
-    tempora at veritatis incidunt aliquam! Adipisci soluta dolore distinctio?
-    Suscipit mollitia dicta corrupti quisquam, ratione eaque fugit asperiores
-    officiis consequuntur modi iure cum, iste doloribus libero. Dolorum velit
-    deserunt inventore enim reprehenderit ab facere mollitia. Hic sed quis ex.
-    Dolor optio omnis ipsam minima iusto. Ea molestiae explicabo autem aut quae
-    et omnis nostrum earum unde, ut mollitia iure!
-  </p>
+  <div class="grid grid-cols-4 gap-5">
+    <div v-for="p in products" :key="p.id">
+      <ProductCard :product="p" />
+    </div>
+  </div>
 </template>
 
 <script setup>
 definePageMeta({
   layout: "products",
+});
+// fetch the products
+const { data: products } = await useFetch("https://fakestoreapi.com/products");
+
+useHead({
+  title: "Nuxt Dojo | Merch",
+  meta: [
+    {
+      hid: "description",
+      name: "description",
+      content: "Nuxt 3 Merch",
+    },
+  ],
 });
 </script>
 
